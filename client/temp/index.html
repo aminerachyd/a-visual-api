@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>A Visual API</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <section id="nav-section">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <div>
+            <a class="navbar-brand" href="./index.html">A Visual API</a>
+          </div>
+          <button
+            class="navbar-toggler d-block-sm align-self-start"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="https://github.com/aminerachyd"
+                  target="_"
+                  >Github</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <!-- API Link -->
+    <section id="input-section">
+      <div class="container mt-3">
+        <h3>Put your API link here</h3>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">API Link</label>
+            <div class="d-flex">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">GET</span>
+                </div>
+                <input
+                  type="email"
+                  class="form-control mr-3"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Request Method
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <button class="dropdown-item" type="button">GET</button>
+                  <button class="dropdown-item" type="button">POST</button>
+                  <button class="dropdown-item" type="button">PUT</button>
+                  <button class="dropdown-item" type="button">DELETE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Body</label>
+            <textarea
+              class="form-control"
+              aria-describedby="emailHelp"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Result of the request -->
+    <section id="result-section">
+      <div class="container mt-3">
+        <h3>Your result</h3>
+        <p class="code">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quod
+          odit consequuntur dignissimos voluptate iure esse, harum sint laborum
+          quam ut eum sapiente laboriosam sequi animi eligendi, quia nihil amet
+          recusandae quibusdam delectus! Aliquam ab tempore, cupiditate vero
+          voluptates obcaecati est nam distinctio. Id ipsum odit voluptatem ea
+          eaque amet culpa reiciendis sint illo animi nemo sequi pariatur optio
+          atque, at, deleniti officiis laborum unde voluptates quod quam
+          voluptatibus repudiandae inventore omnis. Eos quidem fugit excepturi
+          minima! Porro, saepe! Adipisci error cum minima, tempora ratione
+          optio! Ab autem omnis in debitis quaerat! Atque doloribus possimus
+          eligendi vero molestiae velit natus?
+        </p>
+      </div>
+    </section>
+
+    <section id="footer" class="bg-light mt-5">
+      <footer class="text-center">
+        <div class="container py-3">
+          <h5>Made with 9let maydar</h5>
+        </div>
+      </footer>
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
