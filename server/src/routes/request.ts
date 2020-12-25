@@ -29,29 +29,44 @@ router.post(
 
     // We check if the required params are present
     if (bodyData.requestApi && bodyData.requestMethod) {
-      // We check the method if it's a get/post/put/delete
+      // We check if the method is a get/post/put/delete
       if (
         ["get", "post", "put", "delete"].indexOf(
           bodyData.requestMethod.toLowerCase()
         ) > -1
       ) {
+        let requestRes: AxiosResponse;
         switch (bodyData.requestMethod.toLowerCase()) {
           case "get":
-            let requestRes: AxiosResponse = await axios.get(
-              bodyData.requestApi
+            requestRes = await axios.get(bodyData.requestApi);
+            break;
+          case "post":
+            requestRes = await axios.post(
+              bodyData.requestApi,
+              bodyData.requestBody
             );
+            break;
+          case "put":
+            requestRes = await axios.put(
+              bodyData.requestApi,
+              bodyData.requestBody
+            );
+            break;
+          case "delete":
+            requestRes = await axios.delete(bodyData.requestApi);
+            break;
 
-            return res.send(requestRes.data);
-          //   case "post":
-          //     let requestRes: AxiosResponse = await axios.post(
-          //       bodyData.requestApi,
-          //       bodyData.requestBody
-          //     );
-          //   case "put":
-          //   case "delete":
-
-          //   default:
+          default:
+            requestRes = <any>null;
+            break;
         }
+        return res
+          .status(200)
+          .send(
+            requestRes.data
+              ? { Message: "Success", data: requestRes.data }
+              : { Message: "Success" }
+          );
       } else {
         return res.status(400).send({
           Message: "The method you submitted is currently not availabe",
