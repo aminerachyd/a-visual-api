@@ -25,61 +25,66 @@ router.get(
 router.post(
   "/",
   async (req: Request, res: Response): Promise<Response> => {
-    const bodyData: BodyData = req.body;
+    try {
+      const bodyData: BodyData = req.body;
 
-    // We check if the required params are present
-    if (bodyData.requestApi && bodyData.requestMethod) {
-      // We check if the method is a get/post/put/delete
-      if (
-        ["get", "post", "put", "delete"].indexOf(
-          bodyData.requestMethod.toLowerCase()
-        ) > -1
-      ) {
-        let requestRes: AxiosResponse;
-        switch (bodyData.requestMethod.toLowerCase()) {
-          case "get":
-            requestRes = await axios.get(bodyData.requestApi);
-            break;
-          case "post":
-            requestRes = await axios.post(
-              bodyData.requestApi,
-              bodyData.requestBody
-            );
-            break;
-          case "put":
-            requestRes = await axios.put(
-              bodyData.requestApi,
-              bodyData.requestBody
-            );
-            break;
-          case "delete":
-            requestRes = await axios.delete(bodyData.requestApi);
-            break;
+      // We check if the required params are present
+      if (bodyData.requestApi && bodyData.requestMethod) {
+        // We check if the method is a get/post/put/delete
+        if (
+          ["get", "post", "put", "delete"].indexOf(
+            bodyData.requestMethod.toLowerCase()
+          ) > -1
+        ) {
+          let requestRes: AxiosResponse;
+          switch (bodyData.requestMethod.toLowerCase()) {
+            case "get":
+              requestRes = await axios.get(bodyData.requestApi);
+              break;
+            case "post":
+              requestRes = await axios.post(
+                bodyData.requestApi,
+                bodyData.requestBody
+              );
+              break;
+            case "put":
+              requestRes = await axios.put(
+                bodyData.requestApi,
+                bodyData.requestBody
+              );
+              break;
+            case "delete":
+              requestRes = await axios.delete(bodyData.requestApi);
+              break;
 
-          default:
-            requestRes = <any>null;
-            break;
+            default:
+              requestRes = <any>null;
+              break;
+          }
+          return res
+            .status(200)
+            .send(
+              requestRes.data
+                ? { Message: "Success", data: requestRes.data }
+                : { Message: "Success" }
+            );
+        } else {
+          return res.status(400).send({
+            Message: "The method you submitted is currently not availabe",
+          });
         }
-        return res
-          .status(200)
-          .send(
-            requestRes.data
-              ? { Message: "Success", data: requestRes.data }
-              : { Message: "Success" }
-          );
       } else {
         return res.status(400).send({
-          Message: "The method you submitted is currently not availabe",
+          Message:
+            "Missing parameters, you must specify both the API link and the request method",
         });
       }
-    } else {
-      return res.status(400).send({
-        Message:
-          "Missing parameters, you must specify both the API link and the request method",
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({
+        Message: "Server error",
       });
     }
-
-    return res.send({ Message: "You should probably use a POST" });
   }
 );
 export default router;

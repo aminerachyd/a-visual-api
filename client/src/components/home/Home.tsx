@@ -1,70 +1,18 @@
 import React, { Fragment } from "react";
 
+import Form from "./form/Form";
+
 const Home = () => {
   return (
     <Fragment>
-      <section id="input-section">
+      <section>
         <div className="container mt-3">
           <h3>Put your API link here</h3>
-          <form>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">API Link</label>
-              <div className="d-flex">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1">
-                      GET
-                    </span>
-                  </div>
-                  <input
-                    id="exampleInputEmail1"
-                    type="email"
-                    className="form-control mr-3"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
-                <div className="btn-group">
-                  <button
-                    type="button"
-                    className="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Request Method
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    <button className="dropdown-item" type="button">
-                      GET
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      POST
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      PUT
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      DELETE
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Body</label>
-              <textarea
-                className="form-control"
-                aria-describedby="emailHelp"
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </form>
+          <Form />
         </div>
       </section>
 
-      <section id="result-section">
+      <section>
         <div className="container mt-3">
           <h3>Your result</h3>
           <p className="code">
