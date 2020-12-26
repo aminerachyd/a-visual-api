@@ -31,7 +31,11 @@ const Form: React.FC<Props> = ({ setResultData }) => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
     // Sending the form data to the server
-    const res: AxiosResponse = await axios.post("/request", formData);
+    // XXX Modify API link
+    const res: AxiosResponse = await axios.post(
+      "http://server:5000/request",
+      formData
+    );
 
     // XXX For testing purposes
     console.log(res);
