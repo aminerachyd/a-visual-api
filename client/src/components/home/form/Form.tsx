@@ -39,7 +39,7 @@ const Form: React.FC<Props> = ({ setResultData }) => {
     setResultData(res);
   };
 
-  let { requestApi, requestMethod, requestBody } = formData;
+  let { requestMethod } = formData;
 
   return (
     <section>
