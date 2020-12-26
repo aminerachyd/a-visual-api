@@ -36,53 +36,45 @@ router.post(
             bodyData.requestMethod.toLowerCase()
           ) > -1
         ) {
-          let requestRes: AxiosResponse;
-          switch (bodyData.requestMethod.toLowerCase()) {
-            case "get":
-              requestRes = await axios.get(bodyData.requestApi);
-              break;
-            case "post":
-              requestRes = await axios.post(
-                bodyData.requestApi,
-                bodyData.requestBody
+          try {
+            let requestRes: AxiosResponse = await axios({
+              baseURL: bodyData.requestApi,
+              data: bodyData.requestBody,
+              method: <"get" | "post" | "put" | "delete">(
+                bodyData.requestMethod.toLowerCase()
+              ),
+            });
+            return res
+              .status(200)
+              .send(
+                requestRes.data
+                  ? { Message: "Success", data: requestRes.data }
+                  : { Message: "Success", data: "No payload from this request" }
               );
-              break;
-            case "put":
-              requestRes = await axios.put(
-                bodyData.requestApi,
-                bodyData.requestBody
-              );
-              break;
-            case "delete":
-              requestRes = await axios.delete(bodyData.requestApi);
-              break;
-
-            default:
-              requestRes = <any>null;
-              break;
+          } catch (error) {
+            return res.status(200).send({
+              Message: "Error from the API server",
+              data: error,
+            });
           }
-          return res
-            .status(200)
-            .send(
-              requestRes.data
-                ? { Message: "Success", data: requestRes.data }
-                : { Message: "Success" }
-            );
         } else {
           return res.status(400).send({
-            Message: "The method you submitted is currently not availabe",
+            Message: "Error",
+            data: "The method you submitted is currently not availabe",
           });
         }
       } else {
         return res.status(400).send({
-          Message:
+          Message: "Error",
+          data:
             "Missing parameters, you must specify both the API link and the request method",
         });
       }
     } catch (error) {
       console.log(error);
       return res.status(500).send({
-        Message: "Server error",
+        Message: "Error",
+        data: "Server error, try again later",
       });
     }
   }
