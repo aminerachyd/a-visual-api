@@ -11,9 +11,11 @@ import request from "./routes/request";
 const app = express();
 
 // Middleswares
+app.use(cors());
 app.use(express.json());
 
-app.use("/request", cors(), request);
+// Routes
+app.use("/request", request);
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);
