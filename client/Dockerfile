@@ -1,5 +1,5 @@
 # Build environment
-FROM node as build
+FROM node:14-alpine as build
 
 WORKDIR /app
 
@@ -15,8 +15,6 @@ RUN npm run build
 
 # Production environment
 FROM nginx:alpine
-
-COPY default.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/build /usr/share/nginx/html
 

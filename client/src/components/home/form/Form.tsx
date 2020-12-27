@@ -33,7 +33,7 @@ const Form: React.FC<Props> = ({ setResultData }) => {
     // Sending the form data to the server
     // XXX Modify API link
     const res: AxiosResponse = await axios.post(
-      "http://server:5000/request",
+      "http://localhost:5000/request",
       formData
     );
 
