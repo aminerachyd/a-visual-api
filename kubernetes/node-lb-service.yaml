@@ -1,0 +1,17 @@
+# Service for the Node containers/pods
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: node-lb-service
+  name: node-lb-service
+spec:
+  # Has to match the container label
+  selector:
+    app: node-pod
+  ports:
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30001
+      protocol: TCP
+  type: LoadBalancer

@@ -1,0 +1,17 @@
+# Service for the React containers/pods
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: react-lb-service
+  name: react-lb-service
+spec:
+# Has to match the container label
+  selector:
+    app: react-pod
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30000
+      protocol: TCP
+  type: LoadBalancer

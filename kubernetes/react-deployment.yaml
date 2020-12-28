@@ -8,6 +8,7 @@ metadata:
 spec:
   replicas: 2
   selector:
+# Has to match the container label
     matchLabels:
       app: react-pod
   template:
@@ -25,10 +26,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: react-service
   name: react-service
 spec:
+# Has to match the container label
   selector:
-    app: react-depl
+    app: react-pod
   ports:
     - port: 80
       targetPort: 80
+      protocol: TCP

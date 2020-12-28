@@ -31,14 +31,11 @@ const Form: React.FC<Props> = ({ setResultData }) => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
     // Sending the form data to the server
-    // XXX Modify API link
+    // XXX Node loadbalancer goes here
     const res: AxiosResponse = await axios.post(
-      "http://localhost:5000/request",
+      "http://178.128.130.14:5000/request",
       formData
     );
-
-    // XXX For testing purposes
-    console.log(res);
 
     setResultData(res);
   };
